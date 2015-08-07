@@ -1,4 +1,7 @@
 import { EventEmitter } from 'events'
+import request from 'superagent'
+
+let AUCTION_API_URL = process.env.AUCTION_API_URL;
 
 export function highestBid(auction) {
   if (!isStarted(auction)) {
@@ -12,27 +15,25 @@ export function isStarted(auction) {
   return auction.bids.length > 0;
 }
 
-var fakeServer = new EventEmitter();
-
 /**
  * POST /auctions/{auctionId}
  */
 export function sendNewBid(auctionId, bid) {
   return new Promise(function (resolve, reject) {
-    setTimeout(function () {
-      resolve({
-        nextBid: {
-          amount: bid.amount + 5000,
-          currency: bid.currency
+    request
+      .post(AUCTION_API_URL + '/auctions/' + auctionId)
+      .send(bid)
+      .end(function (err, res) {
+        if (err) {
+          return reject(err);
         }
-      });
 
-      setTimeout(function () {
-        fakeServer.emit('res', {
-          bid: bid
-        })
-      }, 100);
-    }, 100);
+        if (!res.ok) {
+          return reject(new Error(res.text));
+        }
+
+        return resolve(res.body);
+      });
   });
 }
 
@@ -42,9 +43,14 @@ export function sendNewBid(auctionId, bid) {
  */
 export function listenAuctionBids(auction) {
   var stream = new EventEmitter();
+  var es = new EventSource(AUCTION_API_URL + '/auctions/' + auction.id + '/live-bids');
 
-  fakeServer.on('res', function (res) {
-    stream.emit('bid', res.bid);
+  es.addEventListener('message', function (event) {
+    try {
+      stream.emit('bid', JSON.parse(event.data));
+    } catch (e) {
+      console.log(e);
+    }
   });
 
   return stream;
