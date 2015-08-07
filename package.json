@@ -12,7 +12,9 @@
     "clean": "rm -rf _public && mkdir _public",
     "copy:assets": "cp -R src/assets/* _public/",
     "deploy": "surge -p ./_public -d auction.activeobject.me",
-    "predeploy": "npm run build"
+    "predeploy": "npm run build",
+    "start": "npm run api:start",
+    "api:start": "node server.js"
   },
   "keywords": [
     "auction"
@@ -20,6 +22,7 @@
   "author": "Vasyl Pryimachuk <activeobject.ac@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.13.3",
     "react": "^0.13.3"
   },
   "devDependencies": {
