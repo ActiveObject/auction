@@ -10,7 +10,9 @@
     "build": "NODE_ENV=production webpack --entry=./src/main.js -p --debug --devtool source-map --progress --output-path=_public",
     "prebuild": "npm run clean && npm run copy:assets",
     "clean": "rm -rf _public && mkdir _public",
-    "copy:assets": "cp -R src/assets/* _public/"
+    "copy:assets": "cp -R src/assets/* _public/",
+    "deploy": "surge -p ./_public -d auction.activeobject.me",
+    "predeploy": "npm run build"
   },
   "keywords": [
     "auction"
@@ -26,6 +28,7 @@
     "css-loader": "^0.15.6",
     "expose-loader": "^0.7.0",
     "style-loader": "^0.12.3",
+    "surge": "^0.14.3",
     "webpack": "^1.11.0",
     "webpack-dev-server": "^1.10.1"
   }
