@@ -88,14 +88,14 @@ export default React.createClass({
 
     return (
       <div className='auction-room'>
-        <div className='auction-room__row'>
+        <div className='auction-room__row clearfix'>
           <span className='auction-room__current-user'>{this.props.user}</span>
         </div>
         <div className='auction-room__row'>
           <Lot value={auction.lot} />
         </div>
 
-        <div className='auction-room__row'>
+        <div className='auction-room__row clearfix'>
           <BidBtn bid={auction.nextBid} onClick={this.sendNewBid} />
           <AuctionStatus auction={auction} />
         </div>
