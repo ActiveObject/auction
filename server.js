@@ -6,7 +6,7 @@ var SSE = require('sse-emitter');
 var bus = new events.EventEmitter();
 
 var sse = new SSE({
-  keepAlive: 30000
+  keepAlive: 60 * 60 * 1000
 });
 
 var auctionDb = [{
