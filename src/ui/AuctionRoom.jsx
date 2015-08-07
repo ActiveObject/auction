@@ -60,7 +60,7 @@ var AuctionStatus = React.createClass({
 
     return <div className='auction-status'></div>;
   }
-})
+});
 
 export default React.createClass({
   componentDidMount: function () {
@@ -87,6 +87,9 @@ export default React.createClass({
 
     return (
       <div className='auction-room'>
+        <div className='auction-room__row'>
+          <span className='auction-room__current-user'>{this.props.user}</span>
+        </div>
         <div className='auction-room__row'>
           <Lot value={auction.lot} />
         </div>

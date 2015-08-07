@@ -10,6 +10,11 @@ body, html {
   margin: 0 auto;
 }
 
+.auction-room__current-user {
+  float: right;
+  margin: 20px;
+}
+
 .lot {
   padding: 30px 0;
 }
