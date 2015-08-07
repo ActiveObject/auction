@@ -1,8 +1,8 @@
 ## Development
 
-You need [node.js](https://nodejs.org/download) installed on you machine.
+You need [node.js](https://nodejs.org/download) installed on your machine.
 
-Intall dependencies:
+Install dependencies:
 ```
 npm install
 ```
