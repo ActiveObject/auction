@@ -1,0 +1,32 @@
+{
+  "name": "auction",
+  "version": "1.0.0",
+  "description": "A simple online auction app",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --entry=./src/main.js --progress --colors --port=5004 --content-base=_public --debug --devtool eval-source-map --output-pathinfo --inline",
+    "predev": "npm run clean && npm run copy:assets",
+    "build": "NODE_ENV=production webpack --entry=./src/main.js -p --debug --devtool source-map --progress --output-path=_public",
+    "prebuild": "npm run clean && npm run copy:assets",
+    "clean": "rm -rf _public && mkdir _public",
+    "copy:assets": "cp -R src/assets/* _public/"
+  },
+  "keywords": [
+    "auction"
+  ],
+  "author": "Vasyl Pryimachuk <activeobject.ac@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^0.13.3"
+  },
+  "devDependencies": {
+    "babel-core": "^5.8.21",
+    "babel-loader": "^5.3.2",
+    "css-loader": "^0.15.6",
+    "expose-loader": "^0.7.0",
+    "style-loader": "^0.12.3",
+    "webpack": "^1.11.0",
+    "webpack-dev-server": "^1.10.1"
+  }
+}
