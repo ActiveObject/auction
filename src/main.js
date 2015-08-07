@@ -1,6 +1,10 @@
 import React from 'react'
 import 'app/styles/main.css'
 
+function highestBid(auction) {
+  return auction.bids[auction.bids.length - 1];
+}
+
 var auction = {
   lot: {
     name: 'Mercedes Benz 300 ‘Adenauer’ Convertible Conversion, 1953',
@@ -12,17 +16,15 @@ var auction = {
     }
   },
 
+  bids: [{
+    user: 'Richard Branson',
+    amount: '40000',
+    currency: 'EUR'
+  }],
+
   nextBid: {
     amount: '40000',
     currency: 'EUR'
-  },
-
-  highestBidder: {
-    name: 'Richard Branson',
-    bid: {
-      amount: '40000',
-      currency: 'EUR'
-    }
   }
 };
 
@@ -60,14 +62,11 @@ var BidBtn = React.createClass({
   }
 });
 
-var HighestBidder = React.createClass({
+var HighestBid = React.createClass({
   render: function () {
     return (
-      <div className='highest-bidder'>
-        <span className='highest-bidder__name'>{this.props.user.name}</span>
-        <span className='highest-bidder__bid'>
-          <Bid value={this.props.user.bid} />
-        </span>
+      <div className='highest-bid'>
+        <span className='highest-bid__name'>{this.props.bid.user}</span> <Bid value={this.props.bid} />
       </div>
     )
   }
@@ -83,7 +82,7 @@ var AuctionRoom = React.createClass({
 
         <div className='auction-room__row'>
           <BidBtn bid={this.props.nextBid} />
-          <HighestBidder user={this.props.highestBidder} />
+          <HighestBid bid={highestBid(this.props)} />
         </div>
       </div>
     )

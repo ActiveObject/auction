@@ -55,7 +55,7 @@ body, html {
   cursor: default;
 }
 
-.highest-bidder {
+.highest-bid {
   float: right;
   line-height: 35px;
 }
