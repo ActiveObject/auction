@@ -64,14 +64,15 @@ var AuctionStatus = React.createClass({
 
 export default React.createClass({
   componentDidMount: function () {
-    this.stream = listenAuctionBids(db.value.auction);
-    this.stream.on('bid', function (bid) {
+    this.stream = listenAuctionBids(this.props.auction);
+    this.stream.on('bid', function (data) {
       Atom.update(db, function (appstate) {
         var { auction } = appstate;
 
         return merge(appstate, {
           auction: merge(auction, {
-            bids: auction.bids.concat(bid)
+            bids: auction.bids.concat(data.bid),
+            nextBid: data.nextBid
           })
         });
       });

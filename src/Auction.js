@@ -16,6 +16,21 @@ export function isStarted(auction) {
 }
 
 /**
+ * GET /auctions/{auctoinId}
+ */
+export function load(auctionId) {
+  return new Promise(function (resolve, reject) {
+    request(AUCTION_API_URL + '/auctions/' + auctionId).end(function (err, res) {
+      if (err) {
+        return reject(err);
+      }
+
+      return resolve(res.body);
+    });
+  });
+}
+
+/**
  * POST /auctions/{auctionId}
  */
 export function sendNewBid(auctionId, bid) {
