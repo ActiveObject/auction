@@ -1,10 +1,13 @@
 import React from 'react'
+import 'app/styles/main.css'
 
 var auction = {
   lot: {
     name: 'Mercedes Benz 300 ‘Adenauer’ Convertible Conversion, 1953',
     desc: 'For this auction, we have assembled a very special selection of chronographs that will entice both new and experienced collectors. Watch lovers can look forward to rare highlights such as a Breitling Premier Chronograph, Ref. 734, and a stylish HY Moser & Cie single button chronograph. With its wide range of manufactures and some remarkable entry prices, this auction presents a unique opportunity for all aficionados of fine timepieces.',
     picture: {
+      width: 460,
+      height: 340,
       href: 'pictures/210518-0028-h.jpg'
     }
   },
@@ -25,11 +28,15 @@ var auction = {
 
 var Lot = React.createClass({
   render: function () {
+    var { href, width, height } = this.props.value.picture;
+
     return (
       <div className='lot'>
-        <span className='lot__name'>{this.props.value.name}</span>
-        <img className='lot__picture' src={this.props.value.picture.href} />
-        <span className='lot_desc'>{this.props.value.desc}</span>
+        <h2 className='lot__name'>{this.props.value.name}</h2>
+        <div>
+          <img className='lot__picture' width={width} height={height} src={href} />
+        </div>
+        <div className='lot__desc'>{this.props.value.desc}</div>
       </div>
     )
   }
@@ -70,9 +77,14 @@ var AuctionRoom = React.createClass({
   render: function () {
     return (
       <div className='auction-room'>
-        <Lot value={this.props.lot} />
-        <BidBtn bid={this.props.nextBid} />
-        <HighestBidder user={this.props.highestBidder} />
+        <div className='auction-room__row'>
+          <Lot value={this.props.lot} />
+        </div>
+
+        <div className='auction-room__row'>
+          <BidBtn bid={this.props.nextBid} />
+          <HighestBidder user={this.props.highestBidder} />
+        </div>
       </div>
     )
   }

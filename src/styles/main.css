@@ -1,0 +1,61 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+.auction-room {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.lot {
+  padding: 30px 0;
+}
+
+.lot__desc {
+  text-align: justify;
+}
+
+.lot__picture {
+  padding-bottom: 30px;
+  display: block;
+  margin: 0 auto;
+}
+
+.bidbtn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  background-color: #6c71c4;
+  font-size: 1rem;
+  padding: 8px 2rem 10px 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  float: left;
+}
+
+.bidbtn:hover, .bidbtn:focus {
+  background-color: #6c71c4;
+  outline: 4px solid #323799;
+}
+
+.bidbtn:active {
+  background-color: #323799;
+}
+
+.bidbtn[disabled],
+.bidbtn[disabled]:hover,
+.bidbtn[disabled]:active {
+  background-color: white;
+  outline: none;
+  color: #CCC;
+  cursor: default;
+}
+
+.highest-bidder {
+  float: right;
+  line-height: 35px;
+}
