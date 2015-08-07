@@ -31,7 +31,7 @@ var Bid = React.createClass({
 var BidBtn = React.createClass({
   render: function () {
     return (
-      <button className='bidbtn' onClick={this.props.onClick} >
+      <button className='btn bidbtn' onClick={this.props.onClick} >
         <span>Commit to bid</span> <Bid value={this.props.bid} />
       </button>
     )

@@ -19,7 +19,5 @@ export default new Atom({
       amount: 40000,
       currency: 'EUR'
     }
-  },
-
-  user: 'Richard Branson'
+  }
 });

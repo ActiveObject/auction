@@ -24,7 +24,7 @@ body, html {
   margin: 0 auto;
 }
 
-.bidbtn {
+.btn {
   border: none;
   outline: none;
   cursor: pointer;
@@ -34,28 +34,53 @@ body, html {
   padding: 8px 2rem 10px 2rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
-  float: left;
 }
 
-.bidbtn:hover, .bidbtn:focus {
+.btn:hover, .btn:focus {
   background-color: #6c71c4;
   outline: 4px solid #323799;
 }
 
-.bidbtn:active {
+.btn:active {
   background-color: #323799;
 }
 
-.bidbtn[disabled],
-.bidbtn[disabled]:hover,
-.bidbtn[disabled]:active {
+.btn[disabled],
+.btn[disabled]:hover,
+.btn[disabled]:active {
   background-color: white;
   outline: none;
   color: #CCC;
   cursor: default;
 }
 
+.bidbtn {
+  float: left;
+}
+
 .highest-bid {
   float: right;
   line-height: 35px;
+}
+
+.signin {
+  position: absolute;
+  width: 600px;
+  height: 40px;
+  left: 50%;
+  top: 50%;
+  margin-top: -20px;
+  margin-left: -250px;
+}
+
+.signin__input {
+  height: 36px;
+  line-height: 36px;
+  border: 1px dashed #eee;
+  outline: none;
+  padding: 0 10px;
+  font-size: 1em;
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
+  width: 400px
 }
